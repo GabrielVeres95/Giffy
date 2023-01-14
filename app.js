@@ -3,10 +3,12 @@
 // 2. When succesfull, change the loading hint to say 'see more'
 // 3. Show error if fails
 
+document.getElementById("input-field").focus();
 
 const API_KEY = 'vycQre5Dgyf6CqIG55QnhJ2rEQXGX6Am'
 const videosElement = document.querySelector('.videos')
 const searchElement = document.querySelector('.search-input')
+const inputField = document.getElementById("input-field")
 const hintElement = document.querySelector('.search-hint')
 const clearElement = document.querySelector('.search-clear')
 
@@ -74,8 +76,11 @@ const toggleLoading = state => {
 
   if(state) {
     document.body.classList.add('loading')
+    inputField.disabled = true
   } else {
     document.body.classList.remove('loading')
+    inputField.disabled = false
+    document.getElementById("input-field").focus()
   }
 
 }
@@ -108,7 +113,7 @@ const clearSearch = event => {
   videosElement.innerHTML = ''
   hintElement.innerHTML = ''
   searchElement.value = ''
-  searchElement.focus()
+  document.getElementById("input-field").focus();
 }
 
 
